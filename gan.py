@@ -116,7 +116,7 @@ def build_networks():
     # I don't exactly understand how decay parameter in Adam works. Certainly not exponential.
     # Actually faster than exponential, when I look at the code and plot it in Excel.
     dopt = Adam(lr=0.0002, beta_1=Args.adam_beta)
-    opt  = Adam(lr=0.0001, beta_1=Args.adam_beta)
+    opt  = Adam(lr=0.00002, beta_1=Args.adam_beta)
 
     # too slow
     # Another thing about LR.
@@ -218,7 +218,7 @@ def train_gan( dataf ) :
     logger.on_train_begin() # initialize csv file
     with h5py.File( dataf, 'r' ) as f :
         faces = f.get( 'faces' )
-        run_batches(gen, disc, gan, faces, logger, range(5000))
+        run_batches(gen, disc, gan, faces, logger, range(30000))
     logger.on_train_end()
 
 
@@ -272,7 +272,7 @@ def run_batches(gen, disc, gan, faces, logger, itr_generator):
         if batch % 10 == 0 and batch != 0 :
             end_of_batch_task(batch, gen, disc, reals, fakes)
             row = {"d_loss0": d_loss0, "d_loss1": d_loss1, "g_loss": g_loss}
-            logger.on_epoch_end(batch, row)
+            #logger.on_epoch_end(batch, row)
 
 
 

@@ -15,7 +15,7 @@ class Args :
     alpha_G = 0.2
 
     # batch size, during training.
-    batch_sz = 64
+    batch_sz = 128
 
     # Length of the noise vector to generate the faces from.
     # Latent space z
@@ -32,7 +32,7 @@ class Args :
     label_noise = 0.1
 
     # history to keep. Slower training but higher quality.
-    history_sz = 8
+    history_sz = 16
 
     genw = "gen.hdf5"
     discw = "disc.hdf5"
